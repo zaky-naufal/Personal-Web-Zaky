@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Zaky Naufal | Personal Identity</title>
+  <style>
+    :root {
+      --bg-primary: #0D1117;
+      --bg-secondary: #161B22;
+      --bg-tertiary: #21262D;
+      --text-primary: #C9D1D9;
+      --text-secondary: #8B949E;
+      --accent: #2dd4bf;
+      --accent-dark: #14b8a6;
+      --shadow-color: rgba(45, 212, 191, 0.2);
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-color: var(--bg-secondary);
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      height: 4.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: var(--accent);
+    }
+    ul.nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+    ul.nav-links li a {
+      font-weight: 600;
+      color: var(--text-secondary);
+      padding: 0.5rem 0;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    ul.nav-links li a:hover,
+    ul.nav-links li a.active {
+      color: var(--accent);
+    }
+    ul.nav-links li a.active::after,
+    ul.nav-links li a:hover::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: var(--accent);
+      border-radius: 2px;
+    }
+    main {
+      padding-top: 4.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+    section {
+      margin-bottom: 5rem;
+      border-radius: 0.5rem;
+      padding: 2rem;
+      box-shadow: 0 0 20px var(--shadow-color);
+      background-color: var(--bg-secondary);
+    }
+    /* Hero Section */
+    #home {
+      text-align: center;
+      background: radial-gradient(circle at center, #0f172a 0%, #0d1117 100%);
+      padding-top: 4rem;
+      padding-bottom: 6rem;
+    }
+    #home img.profile-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 5px solid var(--accent);
+      margin-bottom: 1.5rem;
+      object-fit: cover;
+      box-shadow: 0 0 20px var(--shadow-color);
+    }
+    #home h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      color: var(--text-primary);
+    }
+    #home p.tagline {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    /* About Section */
+    #about h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--accent);
+      text-align: center;
+    }
+    #about p.description {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin: 0 auto 2rem auto;
+      line-height: 1.5;
+    }
+    ul.hobbies {
+      list-style: none;
+      max-width: 400px;
+      margin: 0 auto;
+      padding-left: 1rem;
+    }
+    ul.hobbies li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.75rem;
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+    }
+    ul.hobbies li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.6em;
+      width: 8px;
+      height: 8px;
+      background-color: var(--accent);
+      border-radius: 50%;
+    }
+    /* Skills Section */
+    #skills h2 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      color: var(--accent);
+      text-align: center;
+    }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .skill-card {
+      background-color: var(--bg-tertiary);
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    .skill-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 20px var(--shadow-color);
+    }
+    .skill-icon {
+      color: var(--accent);
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+    }
+    .skill-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin: 0;
+    }
+    .skill-desc {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin: 0;
+      flex-grow: 1;
+    }
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .skill-tag {
+      background-color: var(--accent-dark);
+      color: var(--bg-primary);
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      user-select: none;
+    }
+    /* Contact Section */
+    #contact {
+      text-align: center;
+    }
+    #contact h2 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      color: var(--accent);
+    }
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      transition: color 0.3s ease;
+    }
+    .contact-link:hover {
+      color: var(--accent);
+    }
+    .contact-icon {
+      width: 24px;
+      height: 24px;
+      fill: currentColor;
+      flex-shrink: 0;
+    }
+    /* Footer */
+    footer {
+      background-color: var(--bg-tertiary);
+      color: var(--text-secondary);
+      text-align: center;
+      padding: 1rem 2rem;
+      font-size: 0.9rem;
+      user-select: none;
+    }
+    /* Responsive */
+    @media (max-width: 600px) {
+      nav {
+        padding: 0 1rem;
+      }
+      ul.nav-links {
+        gap: 1rem;
+      }
+      main {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="#home" class="logo">Zaky Naufal's</a>
+      <ul class="nav-links">
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section id="home">
+      <img src="images/Foto.png" alt="My Profile" class="profile-img" />
+      <h1>Zaky Naufal</h1>
+      <p class="tagline">Passionate data scientist creating better data pipelines</p>
+    </section>
+    <section id="about">
+      <h2>About Me</h2>
+      <p class="description">I am a passionate and dedicated data scientist with over 1 months of experience in creating innovative data pipelines. My journey in technology began with a curiosity about how things work on the internet, which has evolved into a career focused on building user-friendly and efficient digital solutions. I believe in continuous learning and staying updated with the latest technologies to deliver the best possible results.</p>
+      <ul class="hobbies">
+        <li>Data analyzing</li>
+        <li>Open source contribution and community building</li>
+        <li>Tech blogging and knowledge sharing</li>
+      </ul>
+    </section>
+    <section id="skills">
+      <h2>Skills & Expertise</h2>
+      <div class="skills-grid">
+        <article class="skill-card">
+          <div class="skill-icon" aria-hidden="true">&#128187;</div>
+          <h3 class="skill-title">Data Visualization</h3>
+          <p class="skill-desc">Creating and extracting insights from existing data using visualization.</p>
+          <div class="skill-tags">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Jupiter Notebook</span>
+            <span class="skill-tag">Tableau</span>
+          </div>
+        </article>
+        <article class="skill-card">
+          <div class="skill-icon" aria-hidden="true">&#128187;</div>
+          <h3 class="skill-title">Backend Development</h3>
+          <p class="skill-desc">Building robust server-side applications and RESTful APIs with scalable architecture.</p>
+          <div class="skill-tags">
+            <span class="skill-tag">MySQL</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">PostgreSQL</span>
+          </div>
+        </article>
+        <article class="skill-card">
+          <div class="skill-icon" aria-hidden="true">&#9881;</div>
+          <h3 class="skill-title">Software Development</h3>
+          <p class="skill-desc">Developing software from scratch based on needed requirements.</p>
+          <div class="skill-tags">
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">C++</span>
+          </div>
+        </article>
+      </div>
+    </section>
+    <section id="contact">
+      <h2>Contact Me</h2>
+      <div class="contact-links">
+        <a href="mailto:mzakynaufalbasuki@gmail.com" class="contact-link" aria-label="My Email">
+          <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M2 4a2 2 0 012-2h16a2 2 0 012 2v16a2 2 0 01-2 2H4a2 2 0 01-2-2V4zm2 0v.01L12 13 20 4.01V4H4zm0 2.236v13.764h16V6.236l-8 7-8-7z"/></svg>
+          <span>mzakynaufalbasuki@gmail.com</span>
+        </a>
+        <a href="https://twitter.com/znos" target="_blank" rel="noopener noreferrer" class="contact-link" aria-label="Twitter John Doe">
+          <svg class="contact-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+          <span>@znos</span>
+        </a>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>© 2025 Zaky Naufal/p>
+  </footer>
+</body>
+</html>
